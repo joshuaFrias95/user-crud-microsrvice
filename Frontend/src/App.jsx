@@ -1,27 +1,21 @@
-import { useState, useEffect } from 'react'
-import './styles/App.css'
-import { Fetch } from "./utils/fetch"
+import { useState, useEffect } from "react";
+import "./styles/App.css";
+import { apiRequest } from "./utils/fetch";
 
 function App() {
+  const [data, setData] = useState(null);
 
- 
- /* const [users, setUsers] = useState(null)
-  useEffect(() => {
-    async function getUser() {
-        const apiGet = new Fetch(8080)};
-        console.log(await apiGet.get("/users"));
-      }
-      getUser()
-  }, []); */
-
+  const handleGetUsers = () => {
+    apiRequest.get('/users')
+  };
 
   return (
     <>
-    <div></div>
-    <div>adios</div>
-    <button onClick={''}>Traer Datos de usuario</button>
+      <div></div>
+      <div>adios</div>
+      <button onClick={handleGetUsers}>Traer Datos de usuario</button>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
