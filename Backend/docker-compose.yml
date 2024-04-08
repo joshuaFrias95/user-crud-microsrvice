@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: hi,welcome
+      MYSQL_DATABASE: userdb
+      MYSQL_USER: mariadbuser
+      MYSQL_PASSWORD: hi,welcome
+    ports:
+      - "3305:3305"
+
+  create-service:
+    build: ./CREATE-SERVICE
+    container_name: create-service
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mariadb
+
+  read-service:
+    build: ./READ-SERVICE
+    container_name: read-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mariadb
+
+  update-service:
+    build: ./UPDATE-SERVICE
+    container_name: update-service
+    ports:
+      - "8083:8083"
+    depends_on:
+      - mariadb
+  delete-service:
+    build: ./DELETE-SERVICE
+    container_name: delete-service
+    ports:
+      - "8082:8082"
+    depends_on:
+      - mariadb
+
+
+
+
