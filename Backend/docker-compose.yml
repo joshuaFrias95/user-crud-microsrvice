@@ -35,6 +35,7 @@ services:
       - "8083:8083"
     depends_on:
       - mariadb
+
   delete-service:
     build: ./DELETE-SERVICE
     container_name: delete-service
@@ -42,6 +43,23 @@ services:
       - "8082:8082"
     depends_on:
       - mariadb
+
+  react-app:
+    build: ../Frontend
+    ports:g
+      - "5173:5173"
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - mariadb
+      - delete-service
+      - update-service
+      - create-service
+      - read-service
+
+
+
+
 
 
 
