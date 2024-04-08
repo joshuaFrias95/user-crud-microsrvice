@@ -20,12 +20,18 @@ public class UserServiceImpl implements UserService {
     public void createUser(UserDto userDto) {
 
         /*  Exception de validaciones*/
-        if (userDto.getUsername() == null || userDto.getUsername().isBlank()) throw new ValidationExceptionHandler("El campo \"username\" no puede estar vacío", "400");
-        if (userDto.getPassword() == null || userDto.getPassword().isBlank()) throw new ValidationExceptionHandler("El campo \"password\" no puede estar vacío", "400");
-        if (userDto.getFirstName() == null || userDto.getFirstName().isBlank()) throw new ValidationExceptionHandler("El campo \"username\" no puede estar vacío", "400");
-        if (userDto.getMiddleName() == null || userDto.getMiddleName().isBlank()) throw new ValidationExceptionHandler("El campo \"password\" no puede estar vacío", "400");
-        if (userDto.getLastName() == null || userDto.getLastName().isBlank()) throw new ValidationExceptionHandler("El campo \"username\" no puede estar vacío", "400");
-        if (userDto.getEmail() == null || userDto.getEmail().isEmpty() || !userDto.getEmail().matches("\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}\\b")) throw new ValidationExceptionHandler("El correo electrónico no está vacio o no tiene el formato correcto", "400");
+        if (userDto.getUsername() == null || userDto.getUsername().isBlank())
+            throw new ValidationExceptionHandler("El campo \"username\" no puede estar vacío", "400");
+        if (userDto.getPassword() == null || userDto.getPassword().isBlank())
+            throw new ValidationExceptionHandler("El campo \"password\" no puede estar vacío", "400");
+        if (userDto.getFirstName() == null || userDto.getFirstName().isBlank())
+            throw new ValidationExceptionHandler("El campo \"username\" no puede estar vacío", "400");
+        if (userDto.getMiddleName() == null || userDto.getMiddleName().isBlank())
+            throw new ValidationExceptionHandler("El campo \"password\" no puede estar vacío", "400");
+        if (userDto.getLastName() == null || userDto.getLastName().isBlank())
+            throw new ValidationExceptionHandler("El campo \"username\" no puede estar vacío", "400");
+        if (userDto.getEmail() == null || userDto.getEmail().isEmpty() || !userDto.getEmail().matches("\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}\\b"))
+            throw new ValidationExceptionHandler("El correo electrónico no está vacio o no tiene el formato correcto", "400");
 
         log.info("Crando usuario...");
         UserEntity userEntity = new UserEntity();
