@@ -9,6 +9,13 @@ export default defineConfig({
     strictPort: true,
   },
   server: {
+/*     proxy: {
+      '/api': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    }, */
     port: 5173,
     strictPort: true,
     host: true,
