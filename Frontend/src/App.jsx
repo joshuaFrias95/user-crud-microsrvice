@@ -2,9 +2,8 @@ import "./styles/App.css";
 import { apiRequest } from "./utils/fetch";
 
 function App() {
-
   const handleGetUsers = async () => {
-    console.log(await apiRequest.get('/users'))
+    console.log(await apiRequest.get("/users"));
   };
 
   return (
