@@ -1,20 +1,32 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import "./styles/App.css";
-import { apiRequest } from "./utils/fetch";
 
 function App() {
-  const [data, setData] = useState(null);
-
-  const handleGetUsers = () => {
-    apiRequest.get('/users')
-  };
+  useEffect(() => {
+    const handleGetUser = async () => {
+      try {
+        const res = await fetch("http://http://read-service:8080/api/v1/users", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Origin": "http://localhost:3000"
+            },
+        });
+        const data = await res.json();
+        console.log(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    handleGetUser();
+  }, []);
 
   return (
-    <>
-      <div></div>
-      <div>adios</div>
-      <button onClick={handleGetUsers}>Traer Datos de usuario</button>
-    </>
+    <div>
+        <div>Datos de usuario</div>
+            <p>{data}</p>
+            <button>Traer datos</button>
+        </div>
   );
 }
 

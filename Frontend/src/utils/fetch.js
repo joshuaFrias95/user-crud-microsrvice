@@ -13,6 +13,7 @@ class Fetch {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
+          "Origin": "http://localhost:5173"
         },
       });
       const data = await res.json();
